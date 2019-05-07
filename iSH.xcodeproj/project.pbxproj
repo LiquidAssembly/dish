@@ -14,7 +14,7 @@
 		BB455E111FB37F6600AFB48B /* DelayedUITask.m in Sources */ = {isa = PBXBuildFile; fileRef = BB455E101FB37F6600AFB48B /* DelayedUITask.m */; };
 		BB52C03D2083DA3600104515 /* xterm-dist in Resources */ = {isa = PBXBuildFile; fileRef = BB52C03C2083DA3600104515 /* xterm-dist */; };
 		BB60F55221573FCA003A4E52 /* BarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = BB60F55121573FCA003A4E52 /* BarButton.m */; };
-		BB623CF91FA7C68800932047 /* alpine in Resources */ = {isa = PBXBuildFile; fileRef = BBF124901FA7C3100088FB50 /* alpine */; };
+		BB623CF91FA7C68800932047 /* debian in Resources */ = {isa = PBXBuildFile; fileRef = BBF124901FA7C3100088FB50 /* debian */; };
 		BB6DB261216435340047A611 /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = BB6DB260216435330047A611 /* libiconv.tbd */; };
 		BB78AB2B1FAD22440013E782 /* TerminalView.m in Sources */ = {isa = PBXBuildFile; fileRef = BB78AB2A1FAD22440013E782 /* TerminalView.m */; };
 		BB792B551F96D90D00FFB7A4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BB792B541F96D90D00FFB7A4 /* AppDelegate.m */; };
@@ -251,7 +251,7 @@
 		BB88F49C2154760800A341FD /* iSHFileProvider.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iSHFileProvider.entitlements; sourceTree = "<group>"; };
 		BB88F4A4215476BA00A341FD /* iSH.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iSH.entitlements; sourceTree = "<group>"; };
 		BBBCE7E421D2F02200CA00B3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/About.storyboard; sourceTree = "<group>"; };
-		BBF124901FA7C3100088FB50 /* alpine */ = {isa = PBXFileReference; explicitFileType = folder; includeInIndex = 0; path = alpine; sourceTree = "<group>"; };
+		BBF124901FA7C3100088FB50 /* debian */ = {isa = PBXFileReference; explicitFileType = folder; includeInIndex = 0; path = debian; sourceTree = "<group>"; };
 		BBFB55652158644C00DFE6DE /* libresolv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.tbd; path = usr/lib/libresolv.tbd; sourceTree = SDKROOT; };
 		BBFB556F21586C4800DFE6DE /* UIViewController+Back.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Back.h"; sourceTree = "<group>"; };
 		BBFB557021586C4800DFE6DE /* UIViewController+Back.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Back.m"; sourceTree = "<group>"; };
@@ -341,7 +341,7 @@
 			isa = PBXGroup;
 			children = (
 				BB792B501F96D90D00FFB7A4 /* iSH.app */,
-				BBF124901FA7C3100088FB50 /* alpine */,
+				BBF124901FA7C3100088FB50 /* debian */,
 				BB13F7DC200AD81D003D1C4D /* libish.a */,
 				BB88F4902154760800A341FD /* iSHFileProvider.appex */,
 			);
@@ -689,8 +689,8 @@
 			buildPhases = (
 				BB792B4C1F96D90D00FFB7A4 /* Sources */,
 				BB792B4D1F96D90D00FFB7A4 /* Frameworks */,
-				BBF1248B1FA7BF530088FB50 /* Download Alpine */,
-				BBF1248A1FA7BDBA0088FB50 /* Create Alpine Filesystem */,
+				BBF1248B1FA7BF530088FB50 /* Download Debian */,
+				BBF1248A1FA7BDBA0088FB50 /* Create Debian Filesystem */,
 				BB4A53AC1FAA49CA00A72ACE /* Compile JavaScript */,
 				BB792B4E1F96D90D00FFB7A4 /* Resources */,
 				BB88F4A32154760800A341FD /* Embed App Extensions */,
@@ -800,7 +800,7 @@
 				BB792B601F96D90D00FFB7A4 /* LaunchScreen.storyboard in Resources */,
 				BBBCE7E321D2F02200CA00B3 /* About.storyboard in Resources */,
 				BB792B5B1F96D90D00FFB7A4 /* Main.storyboard in Resources */,
-				BB623CF91FA7C68800932047 /* alpine in Resources */,
+				BB623CF91FA7C68800932047 /* debian in Resources */,
 				BB52C03D2083DA3600104515 /* xterm-dist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -847,38 +847,38 @@
 			shellPath = "/bin/sh -e";
 			shellScript = "unset SDKROOT\ncd $SRCROOT/app/xtermjs\ntest -d node_modules || npm install\nnpm run build\n";
 		};
-		BBF1248A1FA7BDBA0088FB50 /* Create Alpine Filesystem */ = {
+		BBF1248A1FA7BDBA0088FB50 /* Create Debian Filesystem */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 				"$(SRCROOT)/tools/fakefsify.py",
-				"$(SRCROOT)/alpine.tar.gz",
+				"$(SRCROOT)/debian.tar.gz",
 			);
-			name = "Create Alpine Filesystem";
+			name = "Create Debian Filesystem";
 			outputPaths = (
-				"$(SRCROOT)/alpine",
+				"$(SRCROOT)/debian",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "rm -rf $SRCROOT/alpine\n$SRCROOT/tools/fakefsify.py $SRCROOT/alpine.tar.gz $SRCROOT/alpine\ncat <<EOF >$SRCROOT/alpine/data/etc/motd\nWelcome to Alpine!\n\nYou can install packages with: apk add <package>\n\nYou may change this message by editing /etc/motd.\n\nEOF\n";
+			shellScript = "rm -rf $SRCROOT/debian\n$SRCROOT/tools/fakefsify.py $SRCROOT/debian.tar.gz $SRCROOT/debian\ncat <<EOF >$SRCROOT/debian/data/etc/motd\nWelcome to Debian!\n\nYou can install packages with: apt install <package>\n\nYou may change this message by editing /etc/motd.\n\nEOF\n";
 			showEnvVarsInLog = 0;
 		};
-		BBF1248B1FA7BF530088FB50 /* Download Alpine */ = {
+		BBF1248B1FA7BF530088FB50 /* Download debian */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Download Alpine";
+			name = "Download Debian";
 			outputPaths = (
-				"$(SRCROOT)/alpine.tar.gz",
+				"$(SRCROOT)/debian.tar.gz",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "curl -L http://dl-cdn.alpinelinux.org/alpine/v3.9/releases/x86/alpine-minirootfs-3.9.3-x86.tar.gz -o $SRCROOT/alpine.tar.gz";
+			shellScript = "curl -L https://storage.googleapis.com/serving-dish/dish.tar.gz -o $SRCROOT/debian.tar.gz";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
